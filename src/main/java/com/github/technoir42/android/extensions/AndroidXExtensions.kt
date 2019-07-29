@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package com.github.technoir42.android.extensions
 
 import android.content.Context
@@ -33,7 +35,12 @@ fun DialogFragment.showAllowingStateLoss(fragmentManager: FragmentManager, tag: 
 }
 
 inline fun <reified T : Fragment> FragmentFactory.instantiate(context: Context, args: Bundle? = null): T {
-    return instantiate(context.classLoader, T::class.java.name).apply { arguments = args } as T
+    return instantiate(context, T::class.java, args)
+}
+
+inline fun <T : Fragment> FragmentFactory.instantiate(context: Context, fragmentClass: Class<T>, args: Bundle? = null): T {
+    @Suppress("UNCHECKED_CAST")
+    return instantiate(context.classLoader, fragmentClass.name).apply { arguments = args } as T
 }
 
 fun Toolbar.setTitleOnClickListener(onClickListener: View.OnClickListener) {

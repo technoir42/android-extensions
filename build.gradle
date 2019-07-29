@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.technoir42"
-version = "0.1.1"
+version = "0.1.2"
 
 ext.versions = [
     androidx          : [
