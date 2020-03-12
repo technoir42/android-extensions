@@ -67,6 +67,9 @@ fun <T : ViewParent> View.findParentOfType(type: Class<T>): T? {
     return null
 }
 
+inline val View.layoutInflater: LayoutInflater
+    get() = LayoutInflater.from(context)
+
 inline fun ViewGroup.inflate(@LayoutRes layoutId: Int): View {
     return LayoutInflater.from(context).inflate(layoutId, this, false)
 }
