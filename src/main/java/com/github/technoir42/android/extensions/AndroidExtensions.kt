@@ -31,6 +31,9 @@ inline fun <reified T : Any> Context.requireSystemService(): T {
     }
 }
 
+inline val Context.layoutInflater: LayoutInflater
+    get() = LayoutInflater.from(this)
+
 inline fun <reified T : Parcelable> getParcelableCreator(): Parcelable.Creator<T> {
     val field = T::class.java.getDeclaredField("CREATOR")
     @Suppress("UNCHECKED_CAST")

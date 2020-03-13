@@ -19,9 +19,13 @@ import java.lang.reflect.Field
 
 fun AppCompatActivity.setActionBar(@IdRes id: Int, init: ActionBar.() -> Unit = {}): Toolbar {
     val toolbar = ActivityCompat.requireViewById<Toolbar>(this, id)
+    setActionBar(toolbar, init)
+    return toolbar
+}
+
+fun AppCompatActivity.setActionBar(toolbar: Toolbar, init: ActionBar.() -> Unit) {
     setSupportActionBar(toolbar)
     supportActionBar!!.init()
-    return toolbar
 }
 
 inline fun <reified T : Any> Fragment.getCallback(): T? {
